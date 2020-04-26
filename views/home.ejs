@@ -1,0 +1,92 @@
+<!-- variable part-->
+<!-- <link rel="stylesheet" href="/css/user_profile.css" type="text/css"> -->
+<!-- addindividual style to each page -->
+
+<link rel="stylesheet" href="/css/home.css" type="text/css">
+<div id="upper">
+    <form action="/task/create" method="post">
+        <div id="desc">
+            <h5 class="fonty">DESCRIPTION</h5>
+            <input type="text" name="description" required placeholder="what do you need to do?">
+        </div>
+        <div id="cat-dat">
+
+            <div id="cat">
+                <h5 class="fonty">CATEGORY</h5>
+                <!-- <label for="drop" required>
+                       Choose a category
+                </label> -->
+                <select id="drop" name="task_type">
+                           <option disabled selected>
+             Choose a category
+                        </option>
+                                <option>
+    Personal
+    </option>
+       <option>
+             Home
+      </option>
+        <option>
+         Clothing
+        </option>
+        <option>
+           Development
+        </option>
+        <option>
+              Other
+             </option>
+
+                </select>
+            </div>
+            <div id="dat">
+                <h5 class="fonty">DUE DATE</h5>
+                <input type="date" name="date" required>
+            </div>
+        </div>
+        <div id="middle">
+            <button type="submit" id="plus" name="action" value="update"><i class=" fas fa-plus ">&ensp;&nbsp;</i>ADD TASK</button>
+            <button type="submit" id="rem"  form="task-form"><i class="far fa-trash-alt "></i>&ensp;DELETE TASKS</button>
+        </div>
+    </form>
+</div>
+ 
+ <!-- <div id="container">
+    <% for(let i of task_list){ %>
+    <div class="task">
+        <form id="task-form" action="/task/delete/?id=<%= i._id %>"  method="get">
+            <button type="submit"><input type="checkbox" name="checked"></button>
+            <div class="data">
+                <span class="data-message"><%= i.description %></span><br><br>
+                <span class="data-date "><i class="far fa-calendar-alt "></i>&ensp;&ensp;<%= i.date.toDateString() %></span>
+            </div>
+            <div id="opt">
+                <%= i.task_type %>
+            </div>
+        </form>
+    </div>
+    <%}%>
+</div> -->
+
+
+
+<div id="container">
+    <form id="task-form" action="/task/delete" method="post">
+    <% for(let i of task_list){ %>
+    <div class="task">
+            <input type="checkbox" name="id" value="<%= i._id %>">
+            <div class="data">
+                <span class="data-message"><%= i.description %></span><br><br>
+                <span class="data-date "><i class="far fa-calendar-alt "></i>&ensp;&ensp;<%= i.date.toDateString() %></span>
+            </div>
+            <div id="opt">
+                <%= i.task_type %>
+            </div>
+       
+    </div>
+    <%}%>
+</form>
+</div>
+
+
+<script type="text/javascript" src="/js/home.js">
+</script>
